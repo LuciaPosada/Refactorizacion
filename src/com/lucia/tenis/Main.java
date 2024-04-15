@@ -4,13 +4,16 @@ public class Main {
      * metodo para devolver la puntuacion de tenis
      * @param pointsPlayer1 puntiacion del jugador 1
      * @param pointsPlayer2 puntiacion del jugador 2
-     * @return resultado del partido
+     * @return puntuacion del partido
      */
     public static String getScore(int pointsPlayer1,int pointsPlayer2) {
+        /**
+         * Puntuacion del partido
+         */
         String score = "";
-        final int ADVANTAGE = 4;
+        final int MAX_SCORE = 4;
 
-        if (pointsPlayer1 == pointsPlayer2) {
+        if (pointsPlayer1 == pointsPlayer2) { // Empate
             switch (pointsPlayer1)
             {
                 case 0:
@@ -31,15 +34,18 @@ public class Main {
 
             }
         }
-        else if (pointsPlayer1 >= ADVANTAGE || pointsPlayer2 >= ADVANTAGE)
+        else if (pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE) // Ventaja o Ganar
         {
+            final int ADAVNTAGE_ONE = 1;
+            final int ADVANTAGE_TWO = 2;
+
             int diferenceInPoints = pointsPlayer1-pointsPlayer2;
-            if (diferenceInPoints==1) score ="Advantage player1";
-            else if (diferenceInPoints ==-1) score ="Advantage player2";
-            else if (diferenceInPoints>=2) score = "Win for player1";
+            if (diferenceInPoints==ADAVNTAGE_ONE) score ="Advantage player1";
+            else if (diferenceInPoints ==-ADAVNTAGE_ONE) score ="Advantage player2";
+            else if (diferenceInPoints>=ADVANTAGE_TWO) score = "Win for player1";
             else score ="Win for player2";
         }
-        else
+        else // Puntuacion Regular
         {
             for (int i=1; i<3; i++)
             {
