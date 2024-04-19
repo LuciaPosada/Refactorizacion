@@ -14,25 +14,7 @@ public class Main {
         final int MAX_SCORE = 4;
 
         if (pointsPlayer1 == pointsPlayer2) { // Empate
-            switch (pointsPlayer1)
-            {
-                case 0:
-                    score = "Love-All";
-                    break;
-                case 1:
-                    score = "Fifteen-All";
-                    break;
-                case 2:
-                    score = "Thirty-All";
-                    break;
-                case 3:
-                    score = "Forty-All";
-                    break;
-                default:
-                    score = "Deuce";
-                    break;
-
-            }
+            score = findTieScore(pointsPlayer1);
         }
         else if (pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE) // Ventaja o Ganar
         {
@@ -71,5 +53,21 @@ public class Main {
 
         }
     return score;
+    }
+
+    private static String findTieScore(int pointsPlayer){
+        switch (pointsPlayer) {
+            case 0:
+                return "Love-All";
+            case 1:
+                return "Fifteen-All";
+            case 2:
+                return "Thirty-All";
+            case 3:
+                return "Forty-All";
+            default:
+                return "Deuce";
+
+        }
     }
 }
