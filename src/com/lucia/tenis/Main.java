@@ -15,42 +15,10 @@ public class Main {
 
         if (pointsPlayer1 == pointsPlayer2) { // Empate
             score = findTieScore(pointsPlayer1);
-        }
-        else if (pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE) // Ventaja o Ganar
-        {
-            final int ADAVNTAGE_ONE = 1;
-            final int ADVANTAGE_TWO = 2;
-
-            int diferenceInPoints = pointsPlayer1-pointsPlayer2;
-            if (diferenceInPoints==ADAVNTAGE_ONE) score ="Advantage player1";
-            else if (diferenceInPoints ==-ADAVNTAGE_ONE) score ="Advantage player2";
-            else if (diferenceInPoints>=ADVANTAGE_TWO) score = "Win for player1";
-            else score ="Win for player2";
-        }
-        else // Puntuacion Regular
-        {
-            for (int i=1; i<3; i++)
-            {
-                int temporalScore=0;
-                if (i==1) temporalScore = pointsPlayer1;
-                else { score+="-"; temporalScore = pointsPlayer2;}
-                switch(temporalScore)
-                {
-                    case 0:
-                        score+="Love";
-                        break;
-                    case 1:
-                        score+="Fifteen";
-                        break;
-                    case 2:
-                        score+="Thirty";
-                        break;
-                    case 3:
-                        score+="Forty";
-                        break;
-                }
-            }
-
+        }else if (pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE){ // Ventaja o Ganar
+            score = findAdvantageScore(pointsPlayer1,pointsPlayer2);
+        }else{ // Puntuacion Regular
+            score = findRegularScore(pointsPlayer1,pointsPlayer2);
         }
     return score;
     }
@@ -69,5 +37,48 @@ public class Main {
                 return "Deuce";
 
         }
+    }
+
+    private static String findAdvantageScore(int pointsPlayer1,int pointsPlayer2){
+        final int ADAVNTAGE_ONE = 1;
+        final int ADVANTAGE_TWO = 2;
+
+        int diferenceInPoints = pointsPlayer1-pointsPlayer2;
+
+        if (diferenceInPoints==ADAVNTAGE_ONE){
+            return "Advantage player1";
+        } else if (diferenceInPoints ==-ADAVNTAGE_ONE){
+            return "Advantage player2";
+        } else if (diferenceInPoints>=ADVANTAGE_TWO){
+            return "Win for player1";
+        }else{
+            return "Win for player2";
+        }
+    }
+
+    private static String findRegularScore(int pointsPlayer1,int pointsPlayer2){
+        String score = "";
+        int COMPROBACION_JUGADOR_1 = 1;
+        for (int i=COMPROBACION_JUGADOR_1; i<3; i++) {
+            int temporalScore=0;
+            if (i==1) temporalScore = pointsPlayer1;
+            else { score+="-"; temporalScore = pointsPlayer2;}
+            switch(temporalScore)
+            {
+                case 0:
+                    score+="Love";
+                    break;
+                case 1:
+                    score+="Fifteen";
+                    break;
+                case 2:
+                    score+="Thirty";
+                    break;
+                case 3:
+                    score+="Forty";
+                    break;
+            }
+        }
+        return score;
     }
 }
