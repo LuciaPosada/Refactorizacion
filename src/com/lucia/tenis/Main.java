@@ -11,16 +11,24 @@ public class Main {
          * Puntuacion del partido
          */
         String score = "";
-        final int MAX_SCORE = 4;
 
-        if (pointsPlayer1 == pointsPlayer2) { // Empate
+        if (isTie(pointsPlayer1,pointsPlayer2)) { // Empate
             score = findTieScore(pointsPlayer1);
-        }else if (pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE){ // Ventaja o Ganar
+        }else if (isAdvantage(pointsPlayer1,pointsPlayer2)){ // Ventaja o Ganar
             score = findAdvantageScore(pointsPlayer1,pointsPlayer2);
         }else{ // Puntuacion Regular
             score = findRegularScore(pointsPlayer1,pointsPlayer2);
         }
     return score;
+    }
+
+    private static boolean isTie (int pointsPlayer1,int pointsPlayer2){
+        return pointsPlayer1 == pointsPlayer2;
+    }
+
+    private static boolean isAdvantage (int pointsPlayer1,int pointsPlayer2){
+        final int MAX_SCORE = 4;
+        return pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE;
     }
 
     private static String findTieScore(int pointsPlayer){
