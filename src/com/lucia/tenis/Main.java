@@ -7,19 +7,13 @@ public class Main {
      * @return puntuacion del partido
      */
     public static String getScore(int pointsPlayer1,int pointsPlayer2) {
-        /**
-         * Puntuacion del partido
-         */
-        String score = "";
-
         if (isTie(pointsPlayer1,pointsPlayer2)) { // Empate
-            score = findTieScore(pointsPlayer1);
+            return findTieScore(pointsPlayer1);
         }else if (isAdvantage(pointsPlayer1,pointsPlayer2)){ // Ventaja o Ganar
-            score = findAdvantageScore(pointsPlayer1,pointsPlayer2);
+            return findAdvantageScore(pointsPlayer1,pointsPlayer2);
         }else{ // Puntuacion Regular
-            score = findRegularScore(pointsPlayer1,pointsPlayer2);
+            return findRegularScore(pointsPlayer1,pointsPlayer2);
         }
-    return score;
     }
 
     private static boolean isTie (int pointsPlayer1,int pointsPlayer2){
@@ -66,10 +60,14 @@ public class Main {
     private static String findRegularScore(int pointsPlayer1,int pointsPlayer2){
         String score = "";
         int COMPROBACION_JUGADOR_1 = 1;
-        for (int i=COMPROBACION_JUGADOR_1; i<3; i++) {
+        for (int i=1; i<3; i++) {
             int temporalScore=0;
-            if (i==1) temporalScore = pointsPlayer1;
-            else { score+="-"; temporalScore = pointsPlayer2;}
+            if (i==COMPROBACION_JUGADOR_1){
+                temporalScore = pointsPlayer1;
+            } else {
+                score+="-";
+                temporalScore = pointsPlayer2;
+            }
             switch(temporalScore)
             {
                 case 0:
