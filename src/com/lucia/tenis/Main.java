@@ -35,7 +35,6 @@ public class Main {
                 return "Forty-All";
             default:
                 return "Deuce";
-
         }
     }
 
