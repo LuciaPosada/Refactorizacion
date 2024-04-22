@@ -26,17 +26,18 @@ public class Main {
     }
 
     private static String findTieScore(int pointsPlayer){
+        String[] textScore = new String[] {"Love-All","Fifteen-All","Thirty-All","Forty-All","Deuce"};
         switch (pointsPlayer) {
             case 0:
-                return "Love-All";
+                return textScore[0];
             case 1:
-                return "Fifteen-All";
+                return textScore[1];
             case 2:
-                return "Thirty-All";
+                return textScore[2];
             case 3:
-                return "Forty-All";
+                return textScore[3];
             default:
-                return "Deuce";
+                return textScore[4];
         }
     }
 
@@ -44,22 +45,28 @@ public class Main {
         final int ADAVNTAGE_ONE = 1;
         final int ADVANTAGE_TWO = 2;
 
+        String[] textScore = new String[] {"Advantage player1","Advantage player2","Win for player1","Win for player2"};
+
         int diferenceInPoints = pointsPlayer1-pointsPlayer2;
 
         if (diferenceInPoints==ADAVNTAGE_ONE){
-            return "Advantage player1";
+            return textScore[0];
         } else if (diferenceInPoints ==-ADAVNTAGE_ONE){
-            return "Advantage player2";
+            return textScore[1];
         } else if (diferenceInPoints>=ADVANTAGE_TWO){
-            return "Win for player1";
+            return textScore[2];
         }else{
-            return "Win for player2";
+            return textScore[3];
         }
     }
 
     private static String findRegularScore(int pointsPlayer1,int pointsPlayer2){
+
         String score = "";
+        String[] textScore = new String[] {"Love","Fifteen","Thirty","Forty"};
+
         int COMPROBACION_JUGADOR_1 = 1;
+
         for (int i=1; i<3; i++) {
             int temporalScore=0;
             if (i==COMPROBACION_JUGADOR_1){
@@ -71,16 +78,16 @@ public class Main {
             switch(temporalScore)
             {
                 case 0:
-                    score+="Love";
+                    score+=textScore[0];
                     break;
                 case 1:
-                    score+="Fifteen";
+                    score+=textScore[1];
                     break;
                 case 2:
-                    score+="Thirty";
+                    score+=textScore[2];
                     break;
                 case 3:
-                    score+="Forty";
+                    score+=textScore[3];
                     break;
             }
         }
