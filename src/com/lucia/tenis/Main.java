@@ -16,15 +16,32 @@ public class Main {
         }
     }
 
+    /**
+     * Comprueba si el partido esta empatado
+     * @param pointsPlayer1 puntiacion del jugador 1
+     * @param pointsPlayer2 puntiacion del jugador 2
+     * @return confirmacion
+     */
     private static boolean isTie (int pointsPlayer1,int pointsPlayer2){
         return pointsPlayer1 == pointsPlayer2;
     }
 
+    /**
+     * Comprueba si alhun jugador tiene ventaja
+     * @param pointsPlayer1 puntiacion del jugador 1
+     * @param pointsPlayer2 puntiacion del jugador 2
+     * @return confirmacion
+     */
     private static boolean isAdvantage (int pointsPlayer1,int pointsPlayer2){
         final int MAX_SCORE = 4;
         return pointsPlayer1 >= MAX_SCORE || pointsPlayer2 >= MAX_SCORE;
     }
 
+    /**
+     * Elije la puntuacion correspondiente segun los puntos de los jugador(es) en caso del que partido este empatado
+     * @param pointsPlayer puntuacion de uno de los jugadores
+     * @return la puntuacion en caso de ser empate
+     */
     private static String findTieScore(int pointsPlayer){
         String[] textScore = new String[] {"Love-All","Fifteen-All","Thirty-All","Forty-All","Deuce"};
         switch (pointsPlayer) {
@@ -41,6 +58,12 @@ public class Main {
         }
     }
 
+    /**
+     * Elije la puntuacion correspondiente segun los puntos de los jugadores en caso de qu algun jugador tenga ventaja
+     * @param pointsPlayer1 puntiacion del jugador 1
+     * @param pointsPlayer2 puntiacion del jugador 2
+     * @return la puntuacion en caso de ser ventaja
+     */
     private static String findAdvantageScore(int pointsPlayer1,int pointsPlayer2){
         final int ADAVNTAGE_ONE = 1;
         final int ADVANTAGE_TWO = 2;
@@ -60,19 +83,25 @@ public class Main {
         }
     }
 
+    /**
+     * Elije la puntuacion correspondiente segun los puntos de los jugadores
+     * @param pointsPlayer1 puntiacion del jugador 1
+     * @param pointsPlayer2 puntiacion del jugador 2
+     * @return la puntuacion regular
+     */
     private static String findRegularScore(int pointsPlayer1,int pointsPlayer2){
 
         String score = "";
-        String[] textScore = new String[] {"Love","Fifteen","Thirty","Forty"};
+        String[] textScore = new String[] {"Love","Fifteen","Thirty","Forty","-"};
 
-        int COMPROBACION_JUGADOR_1 = 1;
+        int VERIFY_PLAYER_1 = 1;
 
         for (int i=1; i<3; i++) {
             int temporalScore=0;
-            if (i==COMPROBACION_JUGADOR_1){
+            if (i== VERIFY_PLAYER_1){
                 temporalScore = pointsPlayer1;
             } else {
-                score+="-";
+                score+=textScore[4];
                 temporalScore = pointsPlayer2;
             }
             switch(temporalScore)
