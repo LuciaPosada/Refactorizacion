@@ -44,18 +44,7 @@ public class Main {
      */
     private static String findTieScore(int pointsPlayer){
         String[] textScore = new String[] {"Love-All","Fifteen-All","Thirty-All","Forty-All","Deuce"};
-        switch (pointsPlayer) {
-            case 0:
-                return textScore[0];
-            case 1:
-                return textScore[1];
-            case 2:
-                return textScore[2];
-            case 3:
-                return textScore[3];
-            default:
-                return textScore[4];
-        }
+        return textScore[pointsPlayer];
     }
 
     /**
@@ -94,32 +83,6 @@ public class Main {
         String score = "";
         String[] textScore = new String[] {"Love","Fifteen","Thirty","Forty","-"};
 
-        int VERIFY_PLAYER_1 = 1;
-
-        for (int i=1; i<3; i++) {
-            int temporalScore=0;
-            if (i== VERIFY_PLAYER_1){
-                temporalScore = pointsPlayer1;
-            } else {
-                score+=textScore[4];
-                temporalScore = pointsPlayer2;
-            }
-            switch(temporalScore)
-            {
-                case 0:
-                    score+=textScore[0];
-                    break;
-                case 1:
-                    score+=textScore[1];
-                    break;
-                case 2:
-                    score+=textScore[2];
-                    break;
-                case 3:
-                    score+=textScore[3];
-                    break;
-            }
-        }
-        return score;
+        return textScore[pointsPlayer1]+textScore[4]+textScore[pointsPlayer2];
     }
 }
